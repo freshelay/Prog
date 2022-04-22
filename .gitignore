@@ -1,1 +1,6 @@
 /.metadata/
+*.class
+/GameProject/doc/
+/GameProject/log/
+/GameProject/highscore.txt
+/GameProject/bin/

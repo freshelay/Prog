@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="OFF">
+	<appenders>
+		
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-5level %logger{36} - %msg%n" />
+		</Console>
+		
+		<File name="File" fileName="log\log4j.log">
+			<PatternLayout pattern="%d %-5level %logger{36} - %msg%n" />
+		</File>
+		
+	</appenders>
+	
+	<loggers>
+	
+		<root level="warn">
+			<appender-ref ref="Console" />
+			<appender-ref ref="File" />
+		</root>
+		
+		<Logger name="base.GameLoop" level="trace">      		
+    	</Logger>
+    	
+    	<Logger name="playground" level="info">      		
+    	</Logger>
+		
+	</loggers>
+</configuration>
