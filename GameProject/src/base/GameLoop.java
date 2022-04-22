@@ -36,14 +36,30 @@ public class GameLoop {
    /**
     *  before call to {@link #runGame(String[])} this List should be initialized (in constructor).
    */
-  protected List<Playground> levels = null;
+  private List<Playground> levels = new ArrayList<Playground>(0);
 
   private static Logger logger = LogManager.getLogger(GameLoop.class);
 
-  /** constructor which initializes the {@link #levels} ArrayList of Playground instances (levels) to be played. */
-  public GameLoop() {
-    this.levels = new ArrayList<Playground>(1);
-    this.levels.add( new Level1());
+  /** empty constructor which does nothing */
+  public GameLoop() {    
+    
+  }
+  
+  /**
+   * This method adds the given level instance to the end of the currently already stored list of levels to play.
+   * Should be called only before playing starts (e.g. in constructor or before {@link #runGame(String[]) } is called.
+   * 
+   * @param level instance of Playground (a level) to add.
+   */
+  protected void addLevel(Playground level) {
+    this.levels.add(level);
+  }
+  
+  /**
+   *  Removes all levels from the list of levels to play! Do not call this method while {@link #runGame(String[]) } is running!
+   */
+  protected void resetLevels() {
+    this.levels.clear();
   }
 
 
@@ -188,13 +204,15 @@ public class GameLoop {
 
 
   /**
-   * main to start the whole application
+   * main to start the whole application.
+   * initializes the {@link #levels} ArrayList of Playground instances (levels) to be played with one level {@link SpaceInvadersLevel}.
    * 
    * @param args Java default command line args, forwarded to {@link #runGame(String[])}
    * @throws IOException in case highscore.txt cannot be written.
    */
   public static void main(String[] args) throws IOException {
     GameLoop gl = new GameLoop();
+    gl.addLevel(new Level1());
     gl.runGame(args);
   }
 

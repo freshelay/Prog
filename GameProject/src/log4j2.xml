@@ -20,7 +20,7 @@
 			<appender-ref ref="File" />
 		</root>
 		
-		<Logger name="base.GameLoop" level="trace">      		
+		<Logger name="base.GameLoop" level="info">      		
     	</Logger>
     	
     	<Logger name="playground" level="info">      		

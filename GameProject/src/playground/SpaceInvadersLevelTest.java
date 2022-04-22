@@ -5,7 +5,6 @@ import java.awt.Color;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import base.BuggyGame;
 import gameobjects.EgoObject;
 import gameobjects.GameObject;
 import gameobjects.RectObject;
