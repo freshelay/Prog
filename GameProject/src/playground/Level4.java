@@ -38,10 +38,10 @@ public class Level4 extends SpaceInvadersLevel {
 
     if (counter >= MAX_HITS) {
       logger.trace("enemy was hit before for " + counter + " times, which is above "
-          + HitTwiceLevel.MAX_HITS);
+          + LevelHitTwice.MAX_HITS);
       super.actionIfEnemyIsHit(e, shot);
     } else {
-      logger.trace("enemy was hit before for "+counter+" times, which is below "+HitTwiceLevel.MAX_HITS);
+      logger.trace("enemy was hit before for "+counter+" times, which is below "+LevelHitTwice.MAX_HITS);
       e.setObjectFlag("counter", Integer.valueOf(counter + 1));
       // spawn a bonus points object
       double vx = 2 * (Math.random() - 0.5) * SHARDSPEED + e.getVX();

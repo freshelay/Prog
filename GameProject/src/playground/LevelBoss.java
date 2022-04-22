@@ -37,11 +37,11 @@ public class LevelBoss extends SpaceInvadersLevel {
 
     if (counter >= LevelBoss.MAX_SHOTS) {
       logger.trace("enemy was hit before for " + counter + " times, which is equal or above "
-          + HitTwiceLevel.MAX_HITS);
+          + LevelHitTwice.MAX_HITS);
       super.actionIfEnemyIsHit(e, shot);
     } else {
       logger.trace("enemy was hit before for " + counter + " times, which is below "
-          + HitTwiceLevel.MAX_HITS);
+          + LevelHitTwice.MAX_HITS);
       e.setObjectFlag("counter", Integer.valueOf(counter + 1));
     }
     deleteObject(shot.getId());
