@@ -36,19 +36,11 @@ public class LevelHitTwice extends SpaceInvadersLevel {
     return "2 shots at alien required!!!";
   }
 
+  @Override
   protected int calcNrEnemies() {
     return 10;
   }
 
-
-  public void setupInitialState() {
-    super.setupInitialState();
-    GameObject ro = new RectObject("obstacleRect", this, 600, 300, 0, 0, 20, 100, Color.RED) // Remove?
-        .generateColliders();
-    this.addObject(ro);
-    logger.debug("added red box on top");
-
-  }
 
 
   @Override
