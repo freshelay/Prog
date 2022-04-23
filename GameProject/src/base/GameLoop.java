@@ -40,25 +40,38 @@ public class GameLoop {
 
   private static Logger logger = LogManager.getLogger(GameLoop.class);
 
-  /** empty constructor which does nothing */
+  /** constructor which calls {@link #defineLevels()}, which adds all levels of this game. 
+   */
   public GameLoop() {    
-    
+    this.defineLevels();
   }
   
   /**
-   * This method adds the given level instance to the end of the currently already stored list of levels to play.
+   * First resets (clears) the already existing level instances of this game's list of levels ({@link #resetLevels()}), 
+   * then adds one instance of {@link Level1} by calling {@link #addLevel()}. 
+   * Should be called only before playing starts (e.g. in constructor or before {@link #runGame(String[]) } is called.
+   * 
+   * <br><strong>Note:</strong> Subclasses of {@link GameLoop} should override this method to define own levels for their game.
+   */
+  void defineLevels() {  
+    this.resetLevels();
+    this.addLevel(new Level1());
+  }
+  
+  /**
+   * Adds the given level instance to the end of the currently already stored list of levels to play.
    * Should be called only before playing starts (e.g. in constructor or before {@link #runGame(String[]) } is called.
    * 
    * @param level instance of Playground (a level) to add.
    */
-  protected void addLevel(Playground level) {
+  void addLevel(Playground level) {
     this.levels.add(level);
   }
   
   /**
    *  Removes all levels from the list of levels to play! Do not call this method while {@link #runGame(String[]) } is running!
    */
-  protected void resetLevels() {
+  void resetLevels() {
     this.levels.clear();
   }
 
@@ -205,14 +218,13 @@ public class GameLoop {
 
   /**
    * main to start the whole application.
-   * initializes the {@link #levels} ArrayList of Playground instances (levels) to be played with one level {@link SpaceInvadersLevel}.
+   * initializes the {@link #levels} ArrayList of Playground instances (levels) to be played with one level {@link SpaceInvadersLevel} in constructor of {@link #GameLoop}.
    * 
    * @param args Java default command line args, forwarded to {@link #runGame(String[])}
    * @throws IOException in case highscore.txt cannot be written.
    */
   public static void main(String[] args) throws IOException {
-    GameLoop gl = new GameLoop();
-    gl.addLevel(new Level1());
+    GameLoop gl = new GameLoop();    
     gl.runGame(args);
   }
 
